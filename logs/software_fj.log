@@ -1,0 +1,253 @@
+2026-11-22 18:43:17 | INFO | Cliente CLI-001 registrado.
+2026-11-22 18:43:17 | INFO | Operacion 1 completada correctamente.
+2026-11-22 18:43:17 | ERROR | Operacion 2 fallida: El correo electronico no tiene un formato valido.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 59, in <lambda>
+    Cliente("CLI-002", "Carlos Ruiz", "correo-invalido", "3019876543")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/entidades.py", line 39, in __init__
+    self._correo = validar_correo(correo)
+                   ~~~~~~~~~~~~~~^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/validaciones.py", line 63, in validar_correo
+    raise DatoInvalidoError("El correo electronico no tiene un formato valido.")
+software_fj.excepciones.DatoInvalidoError: El correo electronico no tiene un formato valido.
+2026-11-22 18:43:17 | INFO | Cliente CLI-002 registrado.
+2026-11-22 18:43:17 | INFO | Operacion 3 completada correctamente.
+2026-11-22 18:43:17 | ERROR | Operacion 4 fallida: El identificador o el correo del cliente ya se encuentra registrado.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 66, in <lambda>
+    ejecutar_operacion(4, "Detectar identificador de cliente duplicado", lambda: sistema.registrar_cliente(
+                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        Cliente("CLI-001", "Laura Gomez Dos", "laura2@example.com", "3021112233")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ), resultados)
+    ^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 48, in registrar_cliente
+    raise ClienteDuplicadoError(
+        "El identificador o el correo del cliente ya se encuentra registrado."
+    )
+software_fj.excepciones.ClienteDuplicadoError: El identificador o el correo del cliente ya se encuentra registrado.
+2026-11-22 18:43:17 | INFO | Servicio SAL-001 registrado.
+2026-11-22 18:43:17 | INFO | Operacion 5 completada correctamente.
+2026-11-22 18:43:17 | INFO | Servicio EQ-001 registrado.
+2026-11-22 18:43:17 | INFO | Operacion 6 completada correctamente.
+2026-11-22 18:43:17 | INFO | Servicio ASE-001 registrado.
+2026-11-22 18:43:17 | INFO | Operacion 7 completada correctamente.
+2026-11-22 18:43:17 | ERROR | Operacion 8 fallida: El campo 'tarifa_base' debe ser un numero valido.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/validaciones.py", line 19, in validar_numero_positivo
+    numero = float(valor)
+ValueError: could not convert string to float: 'tarifa'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 83, in <lambda>
+    ServicioSala("SAL-ERR", "tarifa", 10)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/servicios.py", line 96, in __init__
+    super().__init__(identificador, "Reserva de sala", tarifa_hora)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/servicios.py", line 21, in __init__
+    self._tarifa_base = validar_numero_positivo(tarifa_base, "tarifa_base")
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/validaciones.py", line 22, in validar_numero_positivo
+    raise DatoInvalidoError(
+        f"El campo '{nombre_campo}' debe ser un numero valido."
+    ) from error
+software_fj.excepciones.DatoInvalidoError: El campo 'tarifa_base' debe ser un numero valido.
+2026-11-22 18:43:17 | INFO | Reserva RES-001 creada para el cliente CLI-001.
+2026-11-22 18:43:17 | INFO | Operacion 9 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos apartados para el servicio SAL-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-001 confirmada.
+2026-11-22 18:43:17 | INFO | Operacion 10 completada correctamente.
+2026-11-22 18:43:17 | INFO | Operacion 11 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos liberados para el servicio SAL-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-001 procesada. Total: $171360.00.
+2026-11-22 18:43:17 | INFO | Operacion 12 completada correctamente.
+2026-11-22 18:43:17 | ERROR | Operacion 13 fallida: Solo se pueden procesar reservas que esten confirmadas.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 100, in <lambda>
+    ejecutar_operacion(13, "Impedir segundo procesamiento de la misma reserva", lambda: sistema.procesar_reserva("RES-001"), resultados)
+                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 119, in procesar_reserva
+    return self.buscar_reserva(identificador).procesar(impuesto, descuento)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/reservas.py", line 99, in procesar
+    raise EstadoReservaError(
+        "Solo se pueden procesar reservas que esten confirmadas."
+    )
+software_fj.excepciones.EstadoReservaError: Solo se pueden procesar reservas que esten confirmadas.
+2026-11-22 18:43:17 | ERROR | Operacion 14 fallida: Solo hay 2 unidades de 'Proyector' disponibles.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 102, in <lambda>
+    ejecutar_operacion(14, "Rechazar reserva de equipos superior al inventario", lambda: sistema.crear_reserva(
+                                                                                         ~~~~~~~~~~~~~~~~~~~~~^
+        "RES-002", "CLI-002", "EQ-001", 3, {"cantidad": 5}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ), resultados)
+    ^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 105, in crear_reserva
+    reserva = Reserva(identificador, cliente, servicio, duracion, parametros)
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/reservas.py", line 44, in __init__
+    self._servicio.validar_parametros(self._duracion, self._parametros)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/servicios.py", line 140, in validar_parametros
+    raise RecursoNoDisponibleError(
+    ...<2 lines>...
+    )
+software_fj.excepciones.RecursoNoDisponibleError: Solo hay 2 unidades de 'Proyector' disponibles.
+2026-11-22 18:43:17 | INFO | Reserva RES-003 creada para el cliente CLI-002.
+2026-11-22 18:43:17 | INFO | Operacion 15 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos apartados para el servicio EQ-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-003 confirmada.
+2026-11-22 18:43:17 | INFO | Operacion 16 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos liberados para el servicio EQ-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-003 cancelada.
+2026-11-22 18:43:17 | INFO | Operacion 17 completada correctamente.
+2026-11-22 18:43:17 | INFO | Reserva RES-004 creada para el cliente CLI-001.
+2026-11-22 18:43:17 | INFO | Operacion 18 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos apartados para el servicio ASE-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-004 confirmada.
+2026-11-22 18:43:17 | INFO | Operacion 19 completada correctamente.
+2026-11-22 18:43:17 | INFO | Recursos liberados para el servicio ASE-001.
+2026-11-22 18:43:17 | INFO | Reserva RES-004 procesada. Total: $203490.00.
+2026-11-22 18:43:17 | INFO | Operacion 20 completada correctamente.
+2026-11-22 18:43:17 | INFO | Servicio SAL-001: disponibilidad cambiada a False.
+2026-11-22 18:43:17 | INFO | Reserva RES-005 creada para el cliente CLI-002.
+2026-11-22 18:43:17 | ERROR | Operacion 21 fallida: El servicio 'Reserva de sala' no esta disponible actualmente.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 131, in <lambda>
+    ejecutar_operacion(21, "Impedir confirmacion de un servicio inhabilitado", lambda: reserva_temporal.confirmar(), resultados)
+                                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/reservas.py", line 77, in confirmar
+    self._servicio.apartar_recursos(self._duracion, self._parametros)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/servicios.py", line 71, in apartar_recursos
+    raise ServicioNoDisponibleError(
+        f"El servicio '{self.nombre}' no esta disponible actualmente."
+    )
+software_fj.excepciones.ServicioNoDisponibleError: El servicio 'Reserva de sala' no esta disponible actualmente.
+2026-11-22 18:43:17 | INFO | Servicio SAL-001: disponibilidad cambiada a True.
+2026-11-22 18:43:17 | ERROR | Operacion 22 fallida: No se encontro el cliente CLI-999.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 134, in <lambda>
+    ejecutar_operacion(22, "Rechazar reserva con cliente inexistente", lambda: sistema.crear_reserva(
+                                                                               ~~~~~~~~~~~~~~~~~~~~~^
+        "RES-006", "CLI-999", "SAL-001", 1, {"personas": 2}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ), resultados)
+    ^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 103, in crear_reserva
+    cliente = self.buscar_cliente(id_cliente)
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 76, in buscar_cliente
+    raise EntidadNoEncontradaError(f"No se encontro el cliente {identificador}.")
+software_fj.excepciones.EntidadNoEncontradaError: No se encontro el cliente CLI-999.
+2026-11-22 18:43:17 | ERROR | Operacion 23 fallida: El campo 'duracion' debe ser mayor que cero.
+Traceback (most recent call last):
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 20, in ejecutar_operacion
+    resultado = accion()
+  File "/mnt/data/Software_FJ_Entrega_Individual/main.py", line 138, in <lambda>
+    ejecutar_operacion(23, "Rechazar reserva con duracion igual a cero", lambda: sistema.crear_reserva(
+                                                                                 ~~~~~~~~~~~~~~~~~~~~~^
+        "RES-007", "CLI-001", "ASE-001", 0, {"tema": "prueba"}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ), resultados)
+    ^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/sistema.py", line 105, in crear_reserva
+    reserva = Reserva(identificador, cliente, servicio, duracion, parametros)
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/reservas.py", line 36, in __init__
+    self._duracion = validar_numero_positivo(duracion, "duracion")
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software_FJ_Entrega_Individual/software_fj/validaciones.py", line 27, in validar_numero_positivo
+    raise DatoInvalidoError(
+        f"El campo '{nombre_campo}' debe ser mayor que cero."
+    )
+software_fj.excepciones.DatoInvalidoError: El campo 'duracion' debe ser mayor que cero.
+2026-11-22 18:43:17 | INFO | Demostracion finalizada. Total=23; exitosas=15; fallidas=8.
+2026-11-22 18:43:17 | INFO | Fin de la ejecucion de Software FJ.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-BASE creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-IMP creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-DES creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-CAN creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Recursos apartados para el servicio EQ-T.
+2026-11-22 18:43:18 | INFO | Reserva R-CAN confirmada.
+2026-11-22 18:43:18 | INFO | Recursos liberados para el servicio EQ-T.
+2026-11-22 18:43:18 | INFO | Reserva R-CAN cancelada.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-ALL creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Recursos apartados para el servicio EQ-T.
+2026-11-22 18:43:18 | INFO | Reserva R-ALL confirmada.
+2026-11-22 18:43:18 | INFO | Recursos liberados para el servicio EQ-T.
+2026-11-22 18:43:18 | INFO | Reserva R-ALL procesada. Total: $40000.00.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-PEND creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Reserva R-PROC creada para el cliente CLI-T.
+2026-11-22 18:43:18 | INFO | Recursos apartados para el servicio ASE-T.
+2026-11-22 18:43:18 | INFO | Reserva R-PROC confirmada.
+2026-11-22 18:43:18 | INFO | Recursos liberados para el servicio ASE-T.
+2026-11-22 18:43:18 | INFO | Reserva R-PROC procesada. Total: $119000.00.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
+2026-11-22 18:43:18 | INFO | Cliente CLI-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio SAL-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio EQ-T registrado.
+2026-11-22 18:43:18 | INFO | Servicio ASE-T registrado.
