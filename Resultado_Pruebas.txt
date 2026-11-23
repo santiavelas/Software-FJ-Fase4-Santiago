@@ -1,0 +1,18 @@
+test_calculo_basico_de_sala (test_software_fj.PruebasSoftwareFJ.test_calculo_basico_de_sala) ... ok
+test_calculo_con_impuesto (test_software_fj.PruebasSoftwareFJ.test_calculo_con_impuesto) ... ok
+test_calculo_con_impuesto_y_descuento (test_software_fj.PruebasSoftwareFJ.test_calculo_con_impuesto_y_descuento) ... ok
+test_cancelar_reserva_devuelve_inventario (test_software_fj.PruebasSoftwareFJ.test_cancelar_reserva_devuelve_inventario) ... ok
+test_detecta_cliente_duplicado (test_software_fj.PruebasSoftwareFJ.test_detecta_cliente_duplicado) ... ok
+test_encadenamiento_de_excepciones (test_software_fj.PruebasSoftwareFJ.test_encadenamiento_de_excepciones) ... ok
+test_inventario_completo_se_puede_procesar (test_software_fj.PruebasSoftwareFJ.test_inventario_completo_se_puede_procesar) ... ok
+test_no_permite_procesar_reserva_pendiente (test_software_fj.PruebasSoftwareFJ.test_no_permite_procesar_reserva_pendiente) ... ok
+test_procesar_reserva_confirmada (test_software_fj.PruebasSoftwareFJ.test_procesar_reserva_confirmada) ... ok
+test_rechaza_cantidad_de_equipo_superior_al_stock (test_software_fj.PruebasSoftwareFJ.test_rechaza_cantidad_de_equipo_superior_al_stock) ... ok
+test_rechaza_capacidad_superior_a_la_sala (test_software_fj.PruebasSoftwareFJ.test_rechaza_capacidad_superior_a_la_sala) ... ok
+test_rechaza_correo_invalido (test_software_fj.PruebasSoftwareFJ.test_rechaza_correo_invalido) ... ok
+test_rechaza_duracion_cero (test_software_fj.PruebasSoftwareFJ.test_rechaza_duracion_cero) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.001s
+
+OK

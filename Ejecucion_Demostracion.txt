@@ -1,0 +1,125 @@
+============================================================================
+SOFTWARE FJ | GESTION DE CLIENTES, SERVICIOS Y RESERVAS
+Componente practico: POO y manejo avanzado de excepciones
+Ejecucion: 22/11/2026 18:43:17
+Tarifas ilustrativas para pruebas academicas; no son precios oficiales.
+============================================================================
+
+OPERACION 1: Registrar cliente con datos correctos
+[OK] Cliente CLI-001: Laura Gomez | Correo: laura@example.com | Estado: Activo
+Fin de la operacion.
+
+OPERACION 2: Rechazar correo electronico con formato incorrecto
+[ERROR CONTROLADO] El correo electronico no tiene un formato valido.
+Fin de la operacion.
+
+OPERACION 3: Registrar segundo cliente con correo valido
+[OK] Cliente CLI-002: Carlos Ruiz | Correo: carlos@example.com | Estado: Activo
+Fin de la operacion.
+
+OPERACION 4: Detectar identificador de cliente duplicado
+[ERROR CONTROLADO] El identificador o el correo del cliente ya se encuentra registrado.
+Fin de la operacion.
+
+OPERACION 5: Registrar servicio de alquiler de sala
+[OK] Reserva de sala | Tarifa por hora: $80,000.00 | Capacidad: 12 personas
+Fin de la operacion.
+
+OPERACION 6: Registrar servicio de alquiler de proyectores
+[OK] Alquiler de Proyector | Tarifa por hora y unidad: $25,000.00 | Existencias: 2
+Fin de la operacion.
+
+OPERACION 7: Registrar servicio de asesoria especializada
+[OK] Asesoria en desarrollo de software | Tarifa por hora: $120,000.00
+Fin de la operacion.
+
+OPERACION 8: Rechazar servicio con tarifa no numerica
+[ERROR CONTROLADO] El campo 'tarifa_base' debe ser un numero valido.
+Fin de la operacion.
+
+OPERACION 9: Crear reserva valida de sala
+[OK] Reserva RES-001 | Cliente: Laura Gomez | Servicio: Reserva de sala | Duracion: 2.0 | Estado: Pendiente
+Fin de la operacion.
+
+OPERACION 10: Confirmar reserva de sala
+[OK] Confirmada
+Fin de la operacion.
+
+OPERACION 11: Calcular total con impuesto y descuento
+[OK] Total RES-001: $171,360.00
+Fin de la operacion.
+
+OPERACION 12: Procesar reserva confirmada
+[OK] Total procesado: $171,360.00
+Fin de la operacion.
+
+OPERACION 13: Impedir segundo procesamiento de la misma reserva
+[ERROR CONTROLADO] Solo se pueden procesar reservas que esten confirmadas.
+Fin de la operacion.
+
+OPERACION 14: Rechazar reserva de equipos superior al inventario
+[ERROR CONTROLADO] Solo hay 2 unidades de 'Proyector' disponibles.
+Fin de la operacion.
+
+OPERACION 15: Crear reserva de un proyector disponible
+[OK] Reserva RES-003 | Cliente: Carlos Ruiz | Servicio: Proyector | Duracion: 4.0 | Estado: Pendiente
+Fin de la operacion.
+
+OPERACION 16: Confirmar reserva de proyector y descontar inventario
+[OK] Confirmada
+Fin de la operacion.
+
+OPERACION 17: Cancelar reserva y devolver unidad al inventario
+[OK] Cancelada
+Fin de la operacion.
+
+OPERACION 18: Crear reserva de asesoria especializada
+[OK] Reserva RES-004 | Cliente: Laura Gomez | Servicio: Asesoria en desarrollo de software | Duracion: 1.5 | Estado: Pendiente
+Fin de la operacion.
+
+OPERACION 19: Confirmar reserva de asesoria
+[OK] Confirmada
+Fin de la operacion.
+
+OPERACION 20: Procesar asesoria con impuesto y descuento
+[OK] Total de asesoria: $203,490.00
+Fin de la operacion.
+
+OPERACION 21: Impedir confirmacion de un servicio inhabilitado
+[ERROR CONTROLADO] El servicio 'Reserva de sala' no esta disponible actualmente.
+Fin de la operacion.
+
+OPERACION 22: Rechazar reserva con cliente inexistente
+[ERROR CONTROLADO] No se encontro el cliente CLI-999.
+Fin de la operacion.
+
+OPERACION 23: Rechazar reserva con duracion igual a cero
+[ERROR CONTROLADO] El campo 'duracion' debe ser mayor que cero.
+Fin de la operacion.
+
+RESUMEN DEL SISTEMA SOFTWARE FJ
+------------------------------------------------------------------------
+Clientes registrados: 2
+Servicios registrados: 3
+Reservas registradas: 4
+
+RESERVAS:
+ - Reserva RES-001 | Cliente: Laura Gomez | Servicio: Reserva de sala | Duracion: 2.0 | Estado: Procesada
+ - Reserva RES-003 | Cliente: Carlos Ruiz | Servicio: Proyector | Duracion: 4.0 | Estado: Cancelada
+ - Reserva RES-004 | Cliente: Laura Gomez | Servicio: Asesoria en desarrollo de software | Duracion: 1.5 | Estado: Procesada
+ - Reserva RES-005 | Cliente: Carlos Ruiz | Servicio: Reserva de sala | Duracion: 1.0 | Estado: Pendiente
+
+SERVICIOS:
+ - Reserva de sala | Tarifa por hora: $80,000.00 | Capacidad: 12 personas
+ - Alquiler de Proyector | Tarifa por hora y unidad: $25,000.00 | Existencias: 2
+ - Asesoria en desarrollo de software | Tarifa por hora: $120,000.00
+
+BALANCE DE LA DEMOSTRACION
+----------------------------------------------------------------------------
+Operaciones ejecutadas: 23
+Operaciones exitosas: 15
+Errores controlados: 8
+Archivo de registro: logs/software_fj.log
+La ejecucion continuo despues de capturar cada error simulado.
+
+Eventos y errores registrados en: logs/software_fj.log

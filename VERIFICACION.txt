@@ -1,0 +1,11 @@
+VERIFICACION LOCAL DEL PROYECTO
+
+Ejecucion principal: correcta.
+Operaciones simuladas: 23.
+Operaciones exitosas: 15.
+Errores controlados: 8.
+Pruebas automatizadas: 13 aprobadas, 0 fallidas.
+Compilacion de modulos: correcta.
+Archivo de eventos y errores: logs/software_fj.log.
+
+Las tarifas son datos ilustrativos. La URL de GitHub, el grupo y el nombre del tutor deben completarse con datos reales antes de la entrega.
